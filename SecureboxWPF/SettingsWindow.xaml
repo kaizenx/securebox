@@ -1,0 +1,16 @@
+﻿<Window x:Class="SecureboxWPF.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" Height="406" Width="669" Closed="Window_Closed"  Icon="securebox_icon.png">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="165*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="117*"/>
+        </Grid.ColumnDefinitions>
+        <CheckBox x:Name ="CheckBoxKeepOriginal" Content="Keep original files after encryption(not advised)" Margin="40,55,40,0" VerticalAlignment="Top" Height="35" FontSize="24" Grid.ColumnSpan="3" Loaded="CheckBoxKeepOriginal_Loaded" />
+        <CheckBox x:Name ="CheckBoxKeepEncrypted" Content="Keep encrypted files after decryption" Margin="40,105,40,0" VerticalAlignment="Top" Height="35" FontSize="24" Grid.ColumnSpan="3" Loaded="CheckBoxKeepEncrypted_Loaded"/>
+        <Button Content="Close" Grid.Column="2" HorizontalAlignment="Left" Margin="84.363,320,0,0" FontSize="24" VerticalAlignment="Top" Width="171" Height="46" Click="Button_Click"/>
+
+    </Grid>
+</Window>

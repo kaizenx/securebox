@@ -1,0 +1,57 @@
+﻿<Window x:Class="SecureboxWPF.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       
+        Title="Securebox" Height="500" Width="300" Icon="securebox_icon.png">
+
+    <Grid Background="#FF34495E">
+        <xctk:WatermarkTextBox x:Name="userName" Watermark="Username" HorizontalAlignment="Left" Height="39" Margin="35,197,35,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="225" FontSize="20"/>
+        <PasswordBox x:Name="passwordBox"  HorizontalAlignment="Left" GotFocus="passwordChanged"  Margin="35,241,35,0" VerticalAlignment="Top" Width="225" Height="42" Loaded="loaded" KeyDown="OnKeyDownHandler"  FontSize="20" LostFocus="passwordLostFocus"/>
+        <Button x:Name="SignInButton" Content="Sign In" FontSize="20" HorizontalAlignment="Left" Margin="35,288,35,0" VerticalAlignment="Top" Width="225" Height="37" Click="SignIn_Click">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard BeginTime="00:00:00" 
+                                        RepeatBehavior="Forever" 
+                                        Storyboard.TargetName="ValidationMessage" 
+                                        Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+                                <ColorAnimation From="Black" To="Red" Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+        <Button Content="Sign Up" FontSize="20" HorizontalAlignment="Left" Margin="35,330,35,0" VerticalAlignment="Top" Width="225" Height="37" Click="SignUp_Click"/>
+        <Image Margin="96,30,96,0" VerticalAlignment="Top" Source="securebox_icon.png"/>
+        <Label Content="Securebox" Margin="96,143,0,0" Foreground="#FFE0E0E0" VerticalAlignment="Top"  FontSize="20" HorizontalAlignment="Left"/>
+        <Label x:Name="ValidationMessage"  FontSize="20" Foreground="#FFE0E0E0" Margin="35,372,35,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="35,433,0,0" VerticalAlignment="Top" Width="222" FontSize="14">
+            <Button.Template>
+                <ControlTemplate>
+                    <TextBlock>
+                            <Hyperlink Foreground="#FFE0E0E0" NavigateUri="https://securebox.io" FontSize="20" RequestNavigate="Hyperlink_RequestNavigate">
+                                <Hyperlink.Inlines>
+                                    <TextBlock VerticalAlignment="Center" Foreground="#FFE0E0E0">
+                                    <TextBlock.Style>
+                                        <Style>
+                                            <Setter Property="TextBlock.Text" Value="https://securebox.io" />
+
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=IsAdvancedSearch}" Value="True">
+                                                    <Setter Property="TextBlock.Text" Value="Standard Search" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                    </TextBlock>
+                                </Hyperlink.Inlines>
+                            </Hyperlink>
+                        </TextBlock>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

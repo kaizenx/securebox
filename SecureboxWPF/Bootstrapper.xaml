@@ -1,0 +1,8 @@
+﻿<Window x:Class="SecureboxWPF.Bootstrapper"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Bootstrapper" Height="300" Width="300" Loaded="Window_Loaded" Icon="securebox_icon.png">
+    <Grid>
+        
+    </Grid>
+</Window>

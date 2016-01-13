@@ -1,0 +1,90 @@
+﻿<Window x:Name="icon" x:Class="SecureboxWPF.SecureboxFileExplorer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:uc="http://www.quickzip.org/UserControls"
+        xmlns:hub="http://www.quickzip.org/UIEventHub"
+         xmlns:conv="http://www.quickzip.org/Converters"
+        Title="SecureboxFileExplorer" Height="768" Width="1366" Icon="securebox_icon.png">
+    <Grid Background="#2f4154">
+        <Grid.Resources>
+            <conv:EntryModelToStringConverter x:Key="emts" />
+        </Grid.Resources>
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>-->
+        <!--<Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Margin="10,10,0,0" Padding="0" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent"
+        BorderThickness="0" Width="38" Click="Encrypt_Button_Click">
+            <StackPanel>
+                <Image Source="lock.png" />
+            </StackPanel>
+        </Button>-->
+        <Button  HorizontalAlignment="Left" Margin="10,10,0,0" Padding="0" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent"
+        BorderThickness="0" Width="54" Height="60" Click="Encrypt_Button_Click">
+            <StackPanel>
+                <Image Source="lock.png" Width="38" Height="40"/>
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="70,10,0,0" Padding="0" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent"
+        BorderThickness="0" Width="54"  Height="60" Click="Decrypt_Button_Click">
+            <StackPanel>
+                <Image Source="unlock.png" Width="38" Height="40" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="ExportButton" HorizontalAlignment="Left"  Margin="130,10,0,0" VerticalAlignment="Top"  Width="54" Background="Transparent" BorderBrush="Transparent"
+        BorderThickness="0" Click="ExportButton_Click" >
+            <StackPanel>
+                <Image Source="arrow_up.png" Width="38" Height="54" />
+            </StackPanel>
+        </Button>
+        <Button x:Name="ImportButton" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top"  Width="54" Background="Transparent" BorderBrush="Transparent"
+        BorderThickness="0" Click="ImportButton_Click" >
+            <StackPanel>
+                <Image Source="arrow_down.png" Width="38" Height="54"/>
+            </StackPanel>
+        </Button>
+        
+
+        <!-- This is required to show dragging items -->
+
+
+        <!--<AdornerDecorator x:Name="PART_DragDropAdorner" Grid.ColumnSpan="3" />-->
+
+        <uc:Explorer x:Name="explorer" Mode="Normal" Margin="0,74,0,0" Loaded="explorer_Loaded"  />
+        <Button Content="Button" HorizontalAlignment="Left" Margin="330,25,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <!--<GridSplitter ResizeDirection="Columns" 
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      ResizeBehavior="PreviousAndNext" Grid.Column="1" />
+        <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch" Grid.Column="2">
+            <hub:UIEventAdapter.Processors>
+                <hub:DragDropLiteEventProcessor />
+            </hub:UIEventAdapter.Processors>
+            <TextBlock Text="CurrentDirectory" FontWeight="Bold" />
+            --><!--ViewModel.FileList.Selection.SelectedItems is IEntryModel--><!--
+            <TextBlock Text="{Binding ViewModel.FileList.CurrentDirectory, 
+                Converter={StaticResource emts},
+                ElementName=explorer}" />
+
+            <TextBlock Text="Selection" FontWeight="Bold" />
+            --><!--ViewModel.FileList.Selection.SelectedItems is List<IEntryViewModel>--><!--
+            <TextBlock Text="{Binding ViewModel.FileList.Selection.SelectedItems, 
+                Converter={StaticResource emts},
+                ElementName=explorer}" />
+
+            <TextBlock Text="Drop Target" FontWeight="Bold" />
+            <TextBlock x:Name="testDroppable" 
+                   AllowDrop="True"
+                   Text="{Binding Label}" >
+              <hub:UIEventAdapter.Processors>
+                <hub:DragDropEventProcessor EnableDrag="false" EnableDrop="true" />
+                <hub:DragDropLiteEventProcessor EnableDrag="false" EnableDrop="true"
+                                               EnableMouse="False" EnableTouch="True" />
+              </hub:UIEventAdapter.Processors>
+
+            </TextBlock>
+        </StackPanel>-->
+        <!-- Explorer in tool window mode -->
+    </Grid>
+</Window>
